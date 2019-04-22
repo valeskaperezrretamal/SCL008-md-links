@@ -27,7 +27,7 @@ let mdLinks= require('./mdLinks.js');
 
 let links = mdLinks('./mdsparaPruebas');
 
-console.log(links);
+ console.log(links);
 
 //process.argv[2] esta es otra forma de poder llamar
 
