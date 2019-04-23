@@ -29,7 +29,9 @@ let links = mdLinks('./mdsparaPruebas');
 
  console.log(links);
 
-//process.argv[2] esta es otra forma de poder llamar
+ //console.log(process.argv[2]);
+ //console.log(process.argv[3]);
+
 
 //se puede gardar un promesa en una variable
 //myPrommiseArray = [];
