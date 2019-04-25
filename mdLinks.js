@@ -53,18 +53,27 @@ const ReadPath= (path)=>{
     });
     return files;    
 }  
-    
-    let links=[];
+
+const getlinks = (files)=>{
     let markdown="";
     files.forEach(file=>{
-         markdown = fs.readFileSync(file).toString(); //lee archivos markdown y los combierte en string
-         links= links.concat(getLinksFromMd(markdown,file));
+        markdown = fs.readFileSync(file).toString(); //lee archivos markdown y los combierte en string
+        links= links.concat(getLinksFromMd(markdown,file));
     });
-    
-    return links;
-      
 }
-    )};
+
+    
+//     let links=[];
+//     let markdown="";
+//     files.forEach(file=>{
+//          markdown = fs.readFileSync(file).toString(); //lee archivos markdown y los combierte en string
+//          links= links.concat(getLinksFromMd(markdown,file));
+//     });
+    
+//     return links;
+      
+// }
+//     )};
 
 
 
