@@ -34,17 +34,25 @@ const getLinksFromMd= (markdown,path)=>{
 function getFileExtension3(filename) {
     return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
   }
+//input: ruta  output: array con ruta de archivos MD
+const ReadPath= (path)=>{
+    let files = stat(path).then((stats)=>{
+         if (stats.isDirectory()){
+        return Promise.all(readDir(path).filter((file)=>{
+            return getFileExtension3(file)==="md";
+        })).then((result)=>{
+            output=[];
+            for(let i=0; i<result.length;i++){output[i]=libpath.join(path, result[i]);}
+                if (output.length<1){throw "elija un archivo o directorio con archivos .md";}
+            return output;
+        });
 
-    if (stats.isDirectory()){
-        files = fs.readdirSync(path);//guard archivos del dirctorio
-        for(let i=0; i<files.length;i++){files[i]=libpath.join(path, files[i]);};//me duvuelve un string,concatena dos rutas, archivo y carpeta, genera la ruta del archivo 
-        files=files.filter((file)=>{return getFileExtension3(file)==="md"});//devuelve archivos con extención .md
-        
-    } else if(stats.isFile() && getFileExtension3(path)==="md"){//ingresa un archivo y debe ser con extención .md
-        files[0]=path;
-
-    }else return console.log("ingresa un archivo .md o un directorio con archivos .md");
-    if (files.length<1) return console.log("ingresa un archivo .md o un directorio con archivos .md")
+        } else if (stats.isDirectory() && getFileExtension3(path)==="md" ){
+            return [path];
+        } else {throw "elija un archivo o directorio valido";}
+    });
+    return files;    
+}  
     
     let links=[];
     let markdown="";
