@@ -26,10 +26,7 @@ const getLinksFromMd= (markdown,path)=>{
     myMarked(markdown, { renderer: renderer });
     return output;
 
-
 }
-
-    
 // fuente http://www.jstips.co/es_es/javascript/get-file-extension/
 function getFileExtension3(filename) {
     return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
