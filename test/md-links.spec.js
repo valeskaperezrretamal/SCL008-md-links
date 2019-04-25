@@ -40,8 +40,13 @@ describe('mdLinks', () => {
      'enlace 1.2 funcionando, para la prueba del archivo numero 3,netflix ',
     file: 'mdsparaPruebas\\archivo3.md' } ])
   })
+
+  test('deberia retornar un mensaje en caso de error',()=>{
+    expect(mdLinks('./mdsparaPruebas')).toEqual(  'ingrese un archivo .md o un directorio con archivos .md')
+
 });
 
 //los test deben mirar al modulo de la logica para poder ejecutarse, osea poner require
 //const math =
 //it('deberia retornar ')
+
