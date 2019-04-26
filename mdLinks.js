@@ -65,7 +65,7 @@ const stat=(path)=>{
     });
   }
 
-//input: ruta  
+  //input: ruta  
 //output: array con ruta de archivos MD
 const ReadPath= (path)=>{
     let files = stat(path).then((stats)=>{
@@ -88,28 +88,23 @@ const ReadPath= (path)=>{
     });
     return files;    
 }  
-
+// input: ruta de archivo .md 
+// output: promesa, array de objetos con propiedades Href, Text y File
 const getlinks = (files)=>{
     let markdown="";
-    files.forEach(file=>{
-        markdown = fs.readFileSync(file).toString(); //lee archivos markdown y los combierte en string
-        links= links.concat(getLinksFromMd(markdown,file));
-    });
+    let promisesArray=[];
+    let links=[]
+    files.forEach(file=>{        
+      promisesArray.push(readFile(file));
+      });
+  return Promise.all(promisesArray).then((array)=>{      
+    array.forEach((e,i)=>{// recorre array del elemento e indice del array
+      markdown=e.toString();    
+      links=links.concat(getLinksFromMd(markdown,files[i]));               
+    })
+    return links;
+  });     
+  
 }
-
-    
-//     let links=[];
-//     let markdown="";
-//     files.forEach(file=>{
-//          markdown = fs.readFileSync(file).toString(); //lee archivos markdown y los combierte en string
-//          links= links.concat(getLinksFromMd(markdown,file));
-//     });
-    
-//     return links;
-      
-// }
-//     )};
-
-
 
 
