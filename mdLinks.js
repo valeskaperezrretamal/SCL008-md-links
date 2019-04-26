@@ -4,12 +4,13 @@ const libpath = require("path");//manjear rutas, aquí esta join
 
 //se agrega a files ReadPath
 const mdLinks = (path,options) =>{
-    let files= ReadPath(path);
-    let links=files.then(getlinks)
-    .catch(reason=>{console.log(reason)});
-    return links;
+    return ReadPath(path)
+    .then(getlinks)
+    .catch(reason=>{console.log("error: " + reason)});
+    
     };
-    module.exports=mdLinks;
+
+module.exports=mdLinks;
 
     // me devuelve array con links 
 const getLinksFromMd= (markdown,path)=>{
