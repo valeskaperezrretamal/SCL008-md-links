@@ -6,8 +6,8 @@ describe('mdLinks', () => {
 /*   it('deberia retornar un array de objetos que contenga href,text y file', () => {
     console.log('FIX ME!');
   }); */
-  test('deberia retornar un array de objetos que contenga href,text y file',()=>{
-    expect(mdLinks('./mdsparaPruebas')).toEqual([ { href: 'https://es.wikipedia.org/wiki/JavaScript',
+  it('deberia retornar un array de objetos que contenga href,text y file',async ()=>{
+    await expect(mdLinks('./mdsparaPruebas')).resolves.toEqual([ { href: 'https://es.wikipedia.org/wiki/JavaScript',
     text: 'enlace a wikipedia funcionando, para archivo numero 1,J.S',
     file: 'mdsparaPruebas\\archivo1.md' },
   { href: 'https://este.enlace.es.muy.bueno/pero/esta.roto',
@@ -38,15 +38,17 @@ describe('mdLinks', () => {
   { href: 'https://www.netflix.com/cl/',
     text:
      'enlace 1.2 funcionando, para la prueba del archivo numero 3,netflix ',
-    file: 'mdsparaPruebas\\archivo3.md' } ])
+    file: 'mdsparaPruebas\\archivo3.md' },
+  { href: 'https://www.google.com&quot;',
+    text: 'https://www.google.com&quot;',
+    file: 'mdsparaPruebas\\ejemploPromesas.js' } ])
   })
-
-  test('deberia retornar un mensaje en caso de error',()=>{
-    expect(mdLinks('./mdsparaPruebas')).toEqual(  'ingrese un archivo .md o un directorio con archivos .md')
+})
+  it('deberia retornar un mensaje en caso de error', async ()=>{
+    await expect(mdLinks('./mdsparaPruebas')).rejects.toThrow('elija un archivo o directorio valido')
 
 });
 
 //los test deben mirar al modulo de la logica para poder ejecutarse, osea poner require
 //const math =
 //it('deberia retornar ')
-
