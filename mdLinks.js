@@ -91,20 +91,24 @@ const ReadPath= (path)=>{
 // input: ruta de archivo .md 
 // output: promesa, array de objetos con propiedades Href, Text y File
 const getlinks = (files)=>{
+    
     let markdown="";
     let promisesArray=[];
     let links=[]
     files.forEach(file=>{        
       promisesArray.push(readFile(file));
+      
       });
+
   return Promise.all(promisesArray).then((array)=>{      
-    array.forEach((e,i)=>{// recorre array del elemento e indice del array
-      markdown=e.toString();    
+    array.forEach((e,i)=>{
+      markdown=e.toString();        
       links=links.concat(getLinksFromMd(markdown,files[i]));               
     })
     return links;
   });     
   
 }
+
 
 
