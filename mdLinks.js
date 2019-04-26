@@ -12,7 +12,7 @@ const mdLinks = (path,options) =>{
 
 module.exports=mdLinks;
 
-    // me devuelve array con links 
+    // devuelve array con links 
 const getLinksFromMd= (markdown,path)=>{
     const renderer = new myMarked.Renderer();
     const output=[];
@@ -28,10 +28,35 @@ const getLinksFromMd= (markdown,path)=>{
     return output;
 
 }
-// fuente http://www.jstips.co/es_es/javascript/get-file-extension/
+// Devuelve la extención del archivo fuente http://www.jstips.co/es_es/javascript/get-file-extension/
 function getFileExtension3(filename) {
     return filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
   }
+
+  //convierte funciones FS a promesas, fuente https://www.frankmitchell.org/2017/06/promise-objects/
+const stat=(path)=>{
+    return new Promise((resolve) => {
+      fs.stat(path, (err, result) => {
+        if (err) {
+          result = {size: 0, mtime: Date.now()};
+        }
+        resolve(result);
+      });
+    });
+  }
+  function readFile(path) {
+    return new Promise((resolve, reject) => {
+      fs.readFile(path, (err, data) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(data);
+      });
+    });
+  }
+
+
+
 //input: ruta  output: array con ruta de archivos MD
 const ReadPath= (path)=>{
     let files = stat(path).then((stats)=>{
