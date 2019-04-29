@@ -57,7 +57,7 @@ Total: 3
 Unique: 3
 ```
 
-### `--Validate` ### `--stats`
+### `--Validate` `--stats`
 
 To obtain statistics that need validation results.
 ```ah
@@ -66,3 +66,7 @@ Total: 3
 Unique: 3
 Broken: 1
 ```
+
+## If you want to collaborate with my repository
+[GitHub]
+https://github.com/valeskaperezrretamal/SCL008-md-links
