@@ -2,24 +2,24 @@
 
 
 ## **mdLinks.js**
-Libreria para extraer los link de documentos markdown
+Library to extract linkages from markdown documents
 
 ## **Installation**
-Instala usando npm
+Install using npm
  ```sh
 $ npm install mdLinks
 ```
 
 ## **Importing**
-también lo puedes importar usando require 
+You can also import it using require 
 ```sh
 let mdLinks= require('./mdLinks.js');
 ```
 
 ## **Uso** 
-mdLinks (path,options); puede aceptar rutas absolutas o relativas.
-Acepta archivos o directorios con exteción .md
-
+mdLinks (path,options);
+can accept absolute or relative routes.
+Accepts files or directories with .md extension
 ## **Executable**
 ```sh
 md-links <path-to-file> [options]
