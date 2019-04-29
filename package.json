@@ -10,6 +10,6 @@
     "path": "^0.12.7"
   },
   "bin": {
-    "md-links": "index.js"
+    "md-links": "./cli.js"
   }
 }
