@@ -13,7 +13,7 @@ $ npm install md-links-de-vale
 ## **Importing**
 You can also import it using require 
 ```sh
-let mdLinks= require('./mdLinks-de-vale');
+let mdLinks= require('md-links-de-vale');
 ```
 
 ## **Uso** 
