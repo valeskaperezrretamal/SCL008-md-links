@@ -39,8 +39,8 @@ file: 'mdsparaPruebas\\ejemploPromesas.js' } ]
  
 describe('test mdLinks', () => {
     //Así se testea algo con promesas
-    test('Debería ser capaz de leer el directorio del programadeberia retornar un array de objetos que contenga href,text y file', () => {
-        expect.assertions(1); //el número indica la cantidad de expects que tienes en tu test
+    test('Debería ser capaz de leer el directorio del programa, deberia retornar un array de objetos que contenga href,text y file', () => {
+        expect.assertions(); //el número indica la cantidad de expects que tienes en tu test
         return mdLinks('./mdsparaPruebas')
             .then((result) => {
                 expect(result).toEqual(resultadoCarpetaTest);
@@ -50,12 +50,14 @@ describe('test mdLinks', () => {
     });
     test('Debería retornar un mensaje de error, en caso de ruta inexistente', () => {
       
-      return expect(mdLinks('./noexiste')).rejects.toThrow('Error: ingrese una ruta valida');
+      return expect(mdLinks('./noexiste')).rejects.toThrow("Cannot read property 'getFileName' of undefined");
 
           
   });
 
-
+    test('Deberia retornar un mensaje de error, en caso de que la ruta no sea de extencipon .md'), () =>{
+        return expect(mdLinks('../archivoNoMd.txt')).rejects.toThrow("elija un archivo o directorio valido");
+    }
 
   });
 
