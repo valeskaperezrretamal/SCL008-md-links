@@ -60,7 +60,7 @@ const ReadPath= (path)=>{
     .catch(reason=>{
       if(reason.code==='ENOENT'){//capturar el error de objeto de node fs.stat
         throw "Error: ingrese una ruta valida";
-      }});        
+      }else throw reason;});        
 }  
 // input: ruta de archivo .md 
 // output: promesa, array de objetos con propiedades Href, Text y File
