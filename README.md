@@ -7,13 +7,13 @@ Library to extract linkages from markdown documents
 ## **Installation**
 Install using npm
  ```sh
-$ npm install mdLinks
+$ npm install md-links-de-vale
 ```
 
 ## **Importing**
 You can also import it using require 
 ```sh
-let mdLinks= require('./mdLinks.js');
+let mdLinks= require('./mdLinks-de-vale');
 ```
 
 ## **Uso** 
