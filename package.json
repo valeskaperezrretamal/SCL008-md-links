@@ -1,9 +1,10 @@
 {
   "name": "md-links-de-vale",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "scripts": {
     "test": "jest --coverage"
   },
+  "repository":"https://github.com/valeskaperezrretamal/SCL008-md-links",
   "dependencies": {
     "fetch-node": "0.0.1",
     "jest": "^24.7.1",
