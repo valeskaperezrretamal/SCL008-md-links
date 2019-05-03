@@ -3,6 +3,7 @@
 const fsPromises = require('fs').promises; //para poder ocupar la libreria,sistema de archivos
 const myMarked = require('marked');//renderizar un texto plano a otro como html u otros
 const libpath = require("path");//manjear rutas, aquí esta join
+const fetch = require('node-fetch');
 
 //se agrega a files ReadPath
 const mdLinks = (path,options) =>{
@@ -67,6 +68,7 @@ const ReadPath= (path)=>{
 const getlinks = (files)=>{
     
     let markdown="";
+
     let promisesArray=[];
     let links=[]
     files.forEach(file=>{        
@@ -83,6 +85,30 @@ const getlinks = (files)=>{
   });     
   
 }
+//input: url a verificar
+//output: promesa que se resuelve en un string con info. del enlace
+ const checkLink=(urlLink)=>{
+   return fetch(urlLink).then(response => {
+       return response.ok ? [true,reponse.status] : [false, response.status];      
+   });    
+ }
 
+ const fillArraytoValidate=(array)=>{
+   let promisesArray=[];
+   array.forEach(e=>{
+     console.log(e.href);
+     promisesArray.push(checkLink(e.href));
+   });
+   return Promise.all(promisesArray)
+     .then((verificados)=>{
+       let output=[];
+       array.forEach((elem,i)=>{
+         output.push(elem);
+         output[i].ok=verificados[i][0];
+         output[i].status=verificados[i][1];
+       });
+       return output;
+     })
+    }
 
 
